@@ -77,12 +77,12 @@ class PdfReport:
         webbrowser.open('file://'+os.path.realpath(self.filename))
 
 
-the_bill = Bill(amount=120, period="March 2021")
-john = Flatmate(name="John", days_in_house=20)
-mary = Flatmate(name="Mary", days_in_house=25)
+the_bill = Bill(amount = float(input("Ender the total bill amount: ")) , period = input("Enter the bill period: "))
+flatmate1 = Flatmate(name=input("Enter flatmate 1 name: ") , days_in_house= float(input("Enter flatmate 1 days in house: ")))
+flatmate2 = Flatmate(name=input("Enter flatmate 2 name: "), days_in_house= float(input("Enter flatmate 2 days in house: ")))
 
-print("John Pays: ", john.pays(bill=the_bill, flatmate2=mary))
-print("Mary Pays: ", mary.pays(bill=the_bill, flatmate2=john))
+print(flatmate1.name, "Pays: ", flatmate1.pays(bill=the_bill, flatmate2=flatmate2))
+print(flatmate2.name, "Pays: ", flatmate2.pays(bill=the_bill, flatmate2=flatmate1))
 
 pdf_report = PdfReport(filename  = "Report1.pdf")
-pdf_report.generate(flatmate1=john, flatmate2= mary, bill=the_bill)
+pdf_report.generate(flatmate1=flatmate1, flatmate2= flatmate2, bill=the_bill)
